@@ -16,7 +16,7 @@ function ManageFood() {
 
   // Fetch all menu items
   const loadMenu = () => {
-    fetch("http://localhost:5000/api/menu")
+    fetch("https://smart-canteen-system-5pye.onrender.com/api/menu")
       .then((res) => res.json())
       .then((data) => {
         setFoods(data);
@@ -38,7 +38,7 @@ function ManageFood() {
     if (!formData.name || !formData.price) return;
 
     try {
-      const res = await fetch("http://localhost:5000/api/menu", {
+      const res = await fetch("https://smart-canteen-system-5pye.onrender.com/api/menu", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -65,7 +65,7 @@ function ManageFood() {
   // Toggle availability (In Stock / Sold Out)
   const toggleAvailability = async (id, currentStatus) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/menu/${id}`, {
+      const res = await fetch(`https://smart-canteen-system-5pye.onrender.com/api/menu/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ isAvailable: !currentStatus }),
@@ -87,7 +87,7 @@ function ManageFood() {
     if (!window.confirm("Are you sure you want to remove this item?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/menu/${id}`, {
+      const res = await fetch(`https://smart-canteen-system-5pye.onrender.com/api/menu/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {

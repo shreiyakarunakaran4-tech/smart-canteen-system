@@ -13,7 +13,7 @@ function Menu() {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/menu")
+    fetch("https://smart-canteen-system-5pye.onrender.com/api/menu")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {

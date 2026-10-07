@@ -15,7 +15,7 @@ function AdminDashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/admin/analytics")
+    fetch("https://smart-canteen-system-5pye.onrender.com/api/admin/analytics")
       .then((res) => res.json())
       .then((resData) => {
         setData(resData);

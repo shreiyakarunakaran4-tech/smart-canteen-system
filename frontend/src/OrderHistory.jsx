@@ -9,7 +9,7 @@ function OrderHistory() {
   const [filter, setFilter] = useState("all");
 
   const fetchOrders = () => {
-    fetch("http://localhost:5000/api/orders")
+    fetch("https://smart-canteen-system-5pye.onrender.com/api/orders")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {

@@ -9,7 +9,7 @@ function StaffDashboard() {
   const [filter, setFilter] = useState("Active");
 
   const fetchOrders = () => {
-    fetch("http://localhost:5000/api/orders")
+    fetch("https://smart-canteen-system-5pye.onrender.com/api/orders")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -32,7 +32,7 @@ function StaffDashboard() {
   const updateStatus = async (orderId, newStatus) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/orders/${orderId}/status`,
+        `https://smart-canteen-system-5pye.onrender.com/api/orders/${orderId}/status`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
