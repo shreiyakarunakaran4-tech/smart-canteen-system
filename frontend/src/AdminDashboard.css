@@ -1,0 +1,218 @@
+.admin-page {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: inherit;
+  padding-bottom: 3rem;
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Header Section */
+.admin-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.admin-header-section h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.admin-header-section p {
+  color: #64748b;
+  margin: 0.35rem 0 0 0;
+  font-size: 0.95rem;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.admin-btn-pill {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 0.65rem 1.25rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #334155;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.admin-btn-pill:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+/* AI Smart Insight Box */
+.ai-insight-box {
+  background: linear-gradient(135deg, #ff5722 0%, #ff8a65 100%);
+  color: #ffffff;
+  padding: 1.5rem 1.8rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.25);
+}
+
+.ai-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ai-text {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #ffffff !important;
+  padding: 1.5rem !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #eef2f6 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-title {
+  display: block;
+  font-size: 0.85rem !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.6px !important;
+  margin-bottom: 0.5rem;
+}
+
+.stat-number {
+  margin: 0 !important;
+  font-size: 2.2rem !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  line-height: 1.2;
+}
+
+.color-orange {
+  color: #ff5722 !important;
+}
+
+.color-green {
+  color: #16a34a !important;
+}
+
+.color-amber {
+  color: #ea580c !important;
+}
+/* Top Dishes Card */
+/* Top Dishes Card */
+.popular-section {
+  background: #ffffff;
+  padding: 1.75rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1px solid #edf2f7;
+}
+
+.popular-section h2 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.3rem;
+  color: #1e293b;
+  font-weight: 700;
+  text-align: left;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+/* Align Headers */
+.admin-table th {
+  padding: 0.9rem 1.25rem;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.th-rank {
+  width: 15%;
+  text-align: center;
+}
+
+.th-item {
+  width: 55%;
+  text-align: left;
+}
+
+.th-qty {
+  width: 30%;
+  text-align: right;
+}
+
+/* Align Rows to Match Headers Exactly */
+.admin-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #f8fafc;
+  color: #334155;
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+.rank-cell {
+  text-align: center;
+  font-weight: 700;
+  color: #ff5722;
+}
+
+.dish-name {
+  text-align: left;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.dish-count {
+  text-align: right;
+  color: #475569;
+}
+
+.dish-count strong {
+  color: #0f172a;
+  font-weight: 700;
+}

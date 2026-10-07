@@ -1,0 +1,381 @@
+.orders-page {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: inherit;
+  padding-bottom: 2rem;
+}
+
+.orders-container {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+}
+
+.orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.orders-header h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0;
+}
+
+.orders-header p {
+  color: #64748b;
+  margin: 0.15rem 0 0 0;
+  font-size: 0.85rem;
+}
+
+/* Compact filter pills */
+.filter-pill-group {
+  display: flex;
+  background: #e2e8f0;
+  padding: 3px;
+  border-radius: 20px;
+}
+
+.filter-pill-group button {
+  padding: 0.35rem 0.85rem;
+  border-radius: 16px;
+  border: none;
+  background: transparent;
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-pill-group button.active {
+  background: #ff5722;
+  color: white;
+  box-shadow: 0 1px 4px rgba(255, 87, 34, 0.25);
+}
+
+/* Compressed Passes List */
+.passes-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Slim Digital Ticket Card */
+.boarding-pass-card {
+  display: flex;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #eef2f6;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s ease;
+}
+
+.boarding-pass-card:hover {
+  transform: translateY(-1px);
+}
+
+.pulse-ready {
+  border: 1.5px solid #16a34a;
+}
+
+/* Left Section: Compressed Main Area */
+.pass-main {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.pass-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.canteen-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #ff5722;
+  letter-spacing: 0.8px;
+}
+
+.order-date-tag {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* Compressed Horizontal Stepper */
+.order-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.25rem 0;
+  padding: 0 0.25rem;
+}
+
+.step-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.step-node span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.node-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.step-node.done .node-circle {
+  background: #ff5722;
+  color: white;
+}
+
+.step-node.done span {
+  color: #1e293b;
+}
+
+.glow-ready {
+  background: #16a34a !important;
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #e2e8f0;
+  margin: 0 -3px 0.8rem -3px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-line.done {
+  background: #ff5722;
+}
+
+/* Compact Dish Badges */
+.pass-items-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.pass-items-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.item-chip {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.item-chip .qty {
+  font-weight: 800;
+  color: #ff5722;
+}
+
+.item-chip .name {
+  color: #334155;
+  font-weight: 500;
+}
+
+/* Compact Total & Counter Station */
+.pass-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.label-sub {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.pass-price {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.counter-pickup-pill {
+  background: #fff7ed;
+  color: #ea580c;
+  border: 1px dashed #fdba74;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+/* Perforated Center Line */
+.pass-divider {
+  width: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notch {
+  width: 16px;
+  height: 16px;
+  background: #f8fafc;
+  border-radius: 50%;
+  position: absolute;
+  left: -8px;
+  z-index: 5;
+}
+
+.notch-top { top: -8px; }
+.notch-bottom { bottom: -8px; }
+
+.perforated-line {
+  height: 100%;
+  border-left: 2px dashed #cbd5e1;
+}
+
+/* Right Section: Compact Token Stub */
+.pass-stub {
+  width: 150px;
+  background: #fafafa;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.25rem;
+}
+
+.token-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+.big-token {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ff5722;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.badge-live-status {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.status-pending { background: #fff7ed; color: #ea580c; }
+.status-preparing { background: #eff6ff; color: #2563eb; }
+.status-ready { background: #dcfce7; color: #16a34a; }
+.status-completed { background: #f1f5f9; color: #64748b; }
+
+.barcode-simulation {
+  display: flex;
+  gap: 2px;
+  height: 20px;
+  align-items: center;
+  margin: 0.2rem 0 0 0;
+  opacity: 0.7;
+}
+
+.bar {
+  width: 1.5px;
+  height: 100%;
+  background: #334155;
+}
+
+.bar.fat {
+  width: 3.5px;
+}
+
+.scan-text {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.empty-orders-card {
+  background: white;
+  padding: 2.5rem 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.explore-btn-accent {
+  display: inline-block;
+  margin-top: 0.75rem;
+  background: #ff5722;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 650px) {
+  .boarding-pass-card {
+    flex-direction: column;
+  }
+  .pass-stub {
+    width: 100%;
+    border-top: 1px dashed #cbd5e1;
+    padding: 0.75rem;
+  }
+  .pass-divider {
+    display: none;
+  }
+}

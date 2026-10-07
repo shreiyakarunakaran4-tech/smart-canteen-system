@@ -1,0 +1,131 @@
+.success-page {
+    min-height: 100vh;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 70px 25px 40px;
+    box-sizing: border-box;
+}
+
+/* Orange check circle */
+.success-icon {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: #f4510b;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 110px;
+    font-weight: bold;
+
+    margin-bottom: 55px;
+}
+
+/* Main heading */
+.success-page h1 {
+    font-size: 42px;
+    color: #111;
+    margin: 0 0 25px;
+    font-weight: 700;
+}
+
+/* Message */
+.success-message {
+    color: #777;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+/* Order details */
+.order-details {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.order-details p {
+    font-size: 18px;
+    color: #555;
+    margin: 15px 0;
+}
+
+/* Token */
+.token-number {
+    display: inline-block;
+    background: #f4510b;
+    color: white;
+
+    font-size: 32px;
+    font-weight: bold;
+
+    padding: 12px 30px;
+    border-radius: 12px;
+
+    margin-bottom: 15px;
+}
+
+/* Status */
+.status b {
+    color: #f4510b;
+}
+
+/* Buttons */
+.success-page button {
+    width: 280px;
+    padding: 14px;
+    margin-top: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.history-btn {
+    background: #f4510b;
+    color: white;
+}
+
+.home-btn {
+    background: #eeeeee;
+    color: #333;
+}
+
+.success-page button:hover {
+    opacity: 0.9;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .success-page {
+        padding-top: 70px;
+    }
+
+    .success-icon {
+        width: 145px;
+        height: 145px;
+        font-size: 90px;
+        margin-bottom: 45px;
+    }
+
+    .success-page h1 {
+        font-size: 32px;
+    }
+
+    .success-message {
+        font-size: 17px;
+    }
+
+    .token-number {
+        font-size: 28px;
+    }
+}

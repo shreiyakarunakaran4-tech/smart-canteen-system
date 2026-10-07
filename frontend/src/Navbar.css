@@ -1,0 +1,280 @@
+/* ================================
+   SMART CANTEEN - NAVBAR
+================================ */
+
+.navbar {
+    width: 100%;
+    min-height: 72px;
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    border-bottom: 1px solid #eeeeee;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   LOGO
+================================ */
+
+.navbar-logo {
+    font-size: 24px;
+    font-weight: 800;
+
+    color: #ff5a1f;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.03);
+}
+
+
+/* ================================
+   NAVIGATION LINKS
+================================ */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 32px;
+}
+
+
+/* Individual links */
+
+.nav-links a {
+    position: relative;
+
+    text-decoration: none;
+
+    color: #444444;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    padding: 8px 0;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Hover */
+
+.nav-links a:hover {
+    color: #ff5a1f;
+
+    transform: translateY(-1px);
+}
+
+
+/* ================================
+   ACTIVE PAGE
+================================ */
+
+.nav-links a.active {
+    color: #ff5a1f;
+}
+
+
+/* Active underline */
+
+.nav-links a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: -5px;
+
+    height: 3px;
+
+    background: #ff5a1f;
+
+    border-radius: 10px;
+}
+
+
+/* ================================
+   HOVER UNDERLINE
+================================ */
+
+.nav-links a:not(.active)::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -5px;
+
+    width: 0;
+
+    height: 3px;
+
+    background: #ff5a1f;
+
+    border-radius: 10px;
+
+    transform: translateX(-50%);
+
+    transition: width 0.3s ease;
+}
+
+
+.nav-links a:not(.active):hover::after {
+    width: 100%;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .nav-links {
+        gap: 22px;
+    }
+
+    .navbar-logo {
+        font-size: 22px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        min-height: auto;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 18px 20px;
+    }
+
+    .navbar-logo {
+        font-size: 22px;
+    }
+
+    .nav-links {
+        gap: 18px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+}
+
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 450px) {
+
+    .navbar {
+        padding: 15px;
+    }
+
+    .navbar-logo {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+}
+/* ================================
+   MOBILE NAVBAR
+================================ */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        min-height: auto;
+        flex-direction: column;
+        gap: 15px;
+        padding: 18px 20px;
+    }
+
+    .navbar-logo {
+        font-size: 22px;
+    }
+
+    .nav-links {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+}
+
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 450px) {
+
+    .navbar {
+        padding: 15px 10px;
+    }
+
+    .navbar-logo {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+}
