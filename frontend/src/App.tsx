@@ -1,3 +1,58 @@
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// import Login from "./Login";
+// import Register from "./Register";
+// import Dashboard from "./Dashboard";
+// import Menu from "./Menu";
+// import Cart from "./Cart";
+// import OrderSuccess from "./OrderSuccess";
+// import OrderHistory from "./OrderHistory";
+// import StaffDashboard from "./StaffDashboard"; 
+// import AdminDashboard from "./AdminDashboard";
+// import AdminLogin from "./AdminLogin";
+// import { CartProvider } from "./CartContext";
+// import StaffLogin from './StaffLogin';
+// import ManageFood from "./ManageFood";
+
+// function App() {
+//     return (
+//         <CartProvider>
+//             <BrowserRouter>
+//                 <Routes>
+
+//                     <Route path="/" element={<Login />} />
+
+//                     <Route path="/login" element={<Login />} />
+
+//                     <Route path="/register" element={<Register />} />
+
+//                     <Route path="/dashboard" element={<Dashboard />} />
+
+//                     <Route path="/menu" element={<Menu />} />
+
+//                     <Route path="/cart" element={<Cart />} />
+
+//                     <Route
+//                         path="/order-success"
+//                         element={<OrderSuccess />}
+//                     />
+
+//                     <Route
+//                         path="/orders"
+//                         element={<OrderHistory />}
+//                     />
+//                     <Route path="/staff" element={<StaffDashboard />} />
+//                     <Route path="/admin" element={<AdminDashboard />} />
+//                     <Route path="/admin-login" element={<AdminLogin />} />
+//                     <Route path="/manage-food" element={<ManageFood />} />
+//                      <Route path="/staff-login" element={<StaffLogin />} />
+//                 </Routes>
+//             </BrowserRouter>
+//         </CartProvider>
+//     );
+// }
+
+// export default App;
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./Login";
@@ -15,41 +70,32 @@ import StaffLogin from './StaffLogin';
 import ManageFood from "./ManageFood";
 
 function App() {
-    return (
-        <CartProvider>
-            <BrowserRouter>
-                <Routes>
+  return (
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/order-success" element={<OrderSuccess />} />
+          <Route path="/orders" element={<OrderHistory />} />
 
-                    <Route path="/" element={<Login />} />
+          {/* Staff Routes */}
+          <Route path="/staff" element={<StaffDashboard />} />
+          <Route path="/staff-dashboard" element={<StaffDashboard />} />
+          <Route path="/staff-login" element={<StaffLogin />} />
 
-                    <Route path="/login" element={<Login />} />
-
-                    <Route path="/register" element={<Register />} />
-
-                    <Route path="/dashboard" element={<Dashboard />} />
-
-                    <Route path="/menu" element={<Menu />} />
-
-                    <Route path="/cart" element={<Cart />} />
-
-                    <Route
-                        path="/order-success"
-                        element={<OrderSuccess />}
-                    />
-
-                    <Route
-                        path="/orders"
-                        element={<OrderHistory />}
-                    />
-                    <Route path="/staff" element={<StaffDashboard />} />
-                    <Route path="/admin" element={<AdminDashboard />} />
-                    <Route path="/admin-login" element={<AdminLogin />} />
-                    <Route path="/manage-food" element={<ManageFood />} />
-                     <Route path="/staff-login" element={<StaffLogin />} />
-                </Routes>
-            </BrowserRouter>
-        </CartProvider>
-    );
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/manage-food" element={<ManageFood />} />
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
+  );
 }
 
 export default App;
