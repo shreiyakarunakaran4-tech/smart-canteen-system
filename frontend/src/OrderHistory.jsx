@@ -9,11 +9,29 @@ function OrderHistory() {
   const [filter, setFilter] = useState("all");
 
   const fetchOrders = () => {
+    // Read the logged-in user from localStorage
+    const savedUser = JSON.parse(
+      localStorage.getItem("canteenUser") || 
+      localStorage.getItem("user") || 
+      "{}"
+    );
+
     fetch("https://smart-canteen-system-5pye.onrender.com/api/orders")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
-          setOrders(data);
+          // If a student is logged in, filter only THEIR orders
+          if (savedUser.name) {
+            const myOrders = data.filter(
+              (order) =>
+                order.customerName?.trim().toLowerCase() ===
+                savedUser.name?.trim().toLowerCase()
+            );
+            setOrders(myOrders);
+          } else {
+            // Fallback if no user is found in session
+            setOrders([]);
+          }
         }
         setLoading(false);
       })
@@ -52,18 +70,18 @@ function OrderHistory() {
 
   return (
     <div className="orders-page">
-      {/* BRAND NAVBAR */}
-   {/* STUDENT NAVBAR */}
-<nav className="navbar">
-  <div className="navbar-logo">🍽️ Smart Canteen</div>
-  <div className="nav-links">
-    <Link to="/dashboard">Home</Link>
-    <Link to="/menu">Menu</Link>
-    <Link to="/cart">Cart</Link>
-    <Link to="/orders" className="active">Orders</Link>
-    <Link to="/">Logout</Link>
-  </div>
-</nav>
+      {/* STUDENT NAVBAR */}
+      <nav className="navbar">
+        <div className="navbar-logo">🍽️ Smart Canteen</div>
+        <div className="nav-links">
+          <Link to="/dashboard">Home</Link>
+          <Link to="/menu">Menu</Link>
+          <Link to="/cart">Cart</Link>
+          <Link to="/orders" className="active">Orders</Link>
+          <Link to="/">Logout</Link>
+        </div>
+      </nav>
+
       <div className="orders-container">
         <div className="orders-header">
           <div>
@@ -185,7 +203,7 @@ function OrderHistory() {
                   <div className="pass-stub">
                     <div className="token-label">TOKEN NO.</div>
                     <div className="big-token">#{order.tokenNumber || "101"}</div>
-                    
+
                     <div className={`badge-live-status status-${order.status?.toLowerCase() || 'pending'}`}>
                       {order.status || "Pending"}
                     </div>
