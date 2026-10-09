@@ -14,7 +14,7 @@ function Register() {
 
     const navigate = useNavigate();
 
-    const handleRegister = (e) => {
+const handleRegister = async (e) => {
         e.preventDefault();
 
         if (!name || !email || !password || !confirmPassword) {
@@ -32,13 +32,26 @@ function Register() {
             return;
         }
 
-        console.log("Name:", name);
-        console.log("Email:", email);
-        console.log("Password:", password);
+        try {
+            const response = await fetch("https://smart-canteen-system-5pye.onrender.com/api/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, password })
+            });
 
-        alert("Registration successful!");
+            const data = await response.json();
 
-        navigate("/login");
+            if (!response.ok) {
+                alert(data.message || "Registration failed. Try again.");
+                return;
+            }
+
+            alert("Account created successfully! Please log in.");
+            navigate("/login");
+        } catch (error) {
+            console.error("Register error:", error);
+            alert("Could not reach backend server. Check your connection!");
+        }
     };
 
 
