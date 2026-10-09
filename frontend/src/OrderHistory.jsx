@@ -21,16 +21,17 @@ function OrderHistory() {
       .then((data) => {
         if (Array.isArray(data)) {
           // If a student is logged in, filter only THEIR orders
+      // If a student is logged in, show their orders OR any test orders tagged "Student"
           if (savedUser.name) {
             const myOrders = data.filter(
               (order) =>
-                order.customerName?.trim().toLowerCase() ===
-                savedUser.name?.trim().toLowerCase()
+                order.customerName?.trim().toLowerCase() === savedUser.name?.trim().toLowerCase() ||
+                order.customerName?.trim().toLowerCase() === "student"
             );
             setOrders(myOrders);
           } else {
-            // Fallback if no user is found in session
-            setOrders([]);
+            // Fallback: show the orders if user session is missing
+            setOrders(data);
           }
         }
         setLoading(false);
