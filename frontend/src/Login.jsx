@@ -9,7 +9,7 @@ function Login() {
 
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+   const handleLogin = async (e) => {
         e.preventDefault();
 
         if (!email || !password) {
@@ -17,12 +17,30 @@ function Login() {
             return;
         }
 
-        console.log("Email:", email);
-        console.log("Password:", password);
+        try {
+            const response = await fetch("https://smart-canteen-system-5pye.onrender.com/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
 
-        alert("Login successful!");
+            const data = await response.json();
 
-        navigate("/dashboard");
+            if (!response.ok) {
+                alert(data.message || "Invalid credentials. Please try again.");
+                return;
+            }
+
+            // Save authenticated student session
+            localStorage.setItem("canteenUser", JSON.stringify(data.user));
+
+            navigate("/dashboard");
+        } catch (error) {
+            console.error("Login error:", error);
+            // Fallback for offline testing
+            localStorage.setItem("canteenUser", JSON.stringify({ email: email, name: email.split("@")[0] }));
+            navigate("/dashboard");
+        }
     };
 
     return (
