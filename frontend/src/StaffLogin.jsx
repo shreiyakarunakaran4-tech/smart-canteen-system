@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './StaffLogin.css';
 
-const API_BASE_URL = 'https://smart-canteen-backend.onrender.com';
-
 export default function StaffLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +15,7 @@ export default function StaffLogin() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/staff-login`, {
+      const response = await fetch("https://smart-canteen-system-5pye.onrender.com/api/auth/staff-login", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -29,13 +27,13 @@ export default function StaffLogin() {
         throw new Error(data.message || 'Invalid staff credentials');
       }
 
-      // Store staff token/session
+      // Store staff session
       localStorage.setItem('staffToken', data.token || 'logged-in');
       if (data.staff) {
         localStorage.setItem('staffInfo', JSON.stringify(data.staff));
       }
 
-      // Redirect directly to Staff Dashboard
+      // Redirect to staff dashboard
       navigate('/staff-dashboard');
     } catch (err) {
       setError(err.message);
