@@ -15,7 +15,8 @@ export default function StaffLogin() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://smart-canteen-system-5pye.onrender.com/api/auth/staff-login", {
+      // Use the existing, live auth endpoint
+      const response = await fetch("https://smart-canteen-system-5pye.onrender.com/api/auth/login", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -24,14 +25,17 @@ export default function StaffLogin() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Invalid staff credentials');
+        throw new Error(data.message || 'Invalid credentials');
+      }
+
+      // Allow staff or admin roles into the staff portal
+      if (data.user && data.user.role !== 'staff' && data.user.role !== 'admin') {
+        throw new Error('Access denied. Staff account required.');
       }
 
       // Store staff session
-      localStorage.setItem('staffToken', data.token || 'logged-in');
-      if (data.staff) {
-        localStorage.setItem('staffInfo', JSON.stringify(data.staff));
-      }
+      localStorage.setItem('staffToken', 'staff-logged-in');
+      localStorage.setItem('staffUser', JSON.stringify(data.user));
 
       // Redirect to staff dashboard
       navigate('/staff-dashboard');
@@ -52,12 +56,12 @@ export default function StaffLogin() {
 
         <form onSubmit={handleSubmit}>
           <div className="staff-form-group">
-            <label>Email Address</label>
+            <label>Staff Email Address</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="staff@canteen.com"
+              placeholder="admin@canteen.com"
               required
             />
           </div>
