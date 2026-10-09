@@ -1,0 +1,87 @@
+.staff-login-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.staff-login-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 35px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.staff-login-card h2 {
+  margin: 0;
+  text-align: center;
+  color: #1f2937;
+  font-size: 24px;
+}
+
+.staff-login-subtext {
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+  margin: 8px 0 20px 0;
+}
+
+.staff-login-error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.staff-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.staff-form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.staff-form-group input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.staff-form-group input:focus {
+  border-color: #2563eb;
+}
+
+.staff-login-btn {
+  width: 100%;
+  padding: 11px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.staff-login-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.staff-login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

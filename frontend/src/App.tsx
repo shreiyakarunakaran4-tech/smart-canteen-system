@@ -11,6 +11,7 @@ import StaffDashboard from "./StaffDashboard";
 import AdminDashboard from "./AdminDashboard";
 import AdminLogin from "./AdminLogin";
 import { CartProvider } from "./CartContext";
+import StaffLogin from './StaffLogin';
 import ManageFood from "./ManageFood";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
                     <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/admin-login" element={<AdminLogin />} />
                     <Route path="/manage-food" element={<ManageFood />} />
+                     <Route path="/staff-login" element={<StaffLogin />} />
                 </Routes>
             </BrowserRouter>
         </CartProvider>

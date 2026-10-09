@@ -21,12 +21,12 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-// ---------------- MONGODB CONNECTION & SEED ADMIN ---------------- //
+// ---------------- MONGODB CONNECTION & SEED DATA ---------------- //
 mongoose.connect(process.env.MONGO_URI)
   .then(async () => {
     console.log('MongoDB Connected Successfully');
 
-    // Automatically ensure default admin credentials exist
+    // 1. Ensure default admin credentials exist
     try {
       const adminExists = await User.findOne({ email: "admin@canteen.com" });
       if (!adminExists) {
@@ -40,6 +40,22 @@ mongoose.connect(process.env.MONGO_URI)
       }
     } catch (e) {
       console.error("Admin seed check failed:", e.message);
+    }
+
+    // 2. Ensure default staff credentials exist
+    try {
+      const staffExists = await User.findOne({ email: "staff@canteen.com" });
+      if (!staffExists) {
+        await User.create({
+          name: "Kitchen Head Staff",
+          email: "staff@canteen.com",
+          password: "staff123",
+          role: "staff"
+        });
+        console.log("Default staff created: staff@canteen.com / staff123");
+      }
+    } catch (e) {
+      console.error("Staff seed check failed:", e.message);
     }
   })
   .catch((err) => console.error('MongoDB Error:', err));
@@ -59,7 +75,7 @@ app.post('/api/auth/register', async (req, res) => {
     const newUser = new User({ 
       name, 
       email, 
-      password,
+      password, 
       role: role || 'student' 
     });
 
@@ -73,7 +89,7 @@ app.post('/api/auth/register', async (req, res) => {
   }
 });
 
-// Login
+// Student / Generic Login
 app.post('/api/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -94,6 +110,33 @@ app.post('/api/auth/login', async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ error: "Login failed" });
+  }
+});
+
+// Staff Login
+app.post('/api/auth/staff-login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const staff = await User.findOne({ email, password });
+
+    if (!staff || (staff.role !== 'staff' && staff.role !== 'admin')) {
+      return res.status(401).json({ message: 'Invalid staff credentials or unauthorized role' });
+    }
+
+    return res.json({
+      success: true,
+      token: 'staff-session-token-' + staff._id,
+      staff: {
+        id: staff._id,
+        name: staff.name,
+        email: staff.email,
+        role: staff.role
+      }
+    });
+  } catch (err) {
+    console.error("Staff login error:", err);
+    return res.status(500).json({ message: 'Server error during staff login' });
   }
 });
 
@@ -125,6 +168,30 @@ app.post('/api/menu', async (req, res) => {
     res.status(201).json(newItem);
   } catch (err) {
     res.status(400).json({ error: err.message });
+  }
+});
+
+// DELETE: Remove an item from the menu
+app.delete('/api/menu/:id', async (req, res) => {
+  try {
+    await MenuItem.findByIdAndDelete(req.params.id);
+    res.json({ message: "Item deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to delete item" });
+  }
+});
+
+// PATCH: Toggle availability or edit details
+app.patch('/api/menu/:id', async (req, res) => {
+  try {
+    const updatedItem = await MenuItem.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { returnDocument: 'after' }
+    );
+    res.json(updatedItem);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update item" });
   }
 });
 
@@ -166,14 +233,13 @@ app.patch("/api/orders/:id/status", async (req, res) => {
     const updatedOrder = await Order.findByIdAndUpdate(
       req.params.id,
       { status },
-      { returnDocument: 'after' } // updated from { new: true }
+      { returnDocument: 'after' }
     );
     res.json(updatedOrder);
   } catch (error) {
     res.status(500).json({ error: "Failed to update order status" });
   }
 });
-
 
 // ---------------- ADMIN ANALYTICS ROUTE ---------------- //
 
@@ -215,29 +281,6 @@ app.get('/api/admin/analytics', async (req, res) => {
   } catch (error) {
     console.error("Admin analytics error:", error);
     res.status(500).json({ error: "Failed to generate analytics" });
-  }
-});
-// DELETE: Remove an item from the menu
-app.delete('/api/menu/:id', async (req, res) => {
-  try {
-    await MenuItem.findByIdAndDelete(req.params.id);
-    res.json({ message: "Item deleted successfully" });
-  } catch (err) {
-    res.status(500).json({ error: "Failed to delete item" });
-  }
-});
-
-// PATCH: Toggle availability or edit details
-app.patch('/api/menu/:id', async (req, res) => {
-  try {
-    const updatedItem = await MenuItem.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { returnDocument: 'after' }
-    );
-    res.json(updatedItem);
-  } catch (err) {
-    res.status(500).json({ error: "Failed to update item" });
   }
 });
 
