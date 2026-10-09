@@ -17,20 +17,22 @@ function Cart() {
     const placeOrder = async () => {
         if (cart.length === 0) return;
 
-        // Read the actual logged-in user name
+        // Retrieve current logged-in user
         const savedUser = JSON.parse(
             localStorage.getItem("canteenUser") || 
             localStorage.getItem("user") || 
             "{}"
         );
-        const customerName = savedUser.name || "Student";
+
+        // Use the logged-in user's name or email
+        const activeCustomerName = savedUser.name || savedUser.email || "Guest";
 
         try {
             const response = await fetch("https://smart-canteen-system-5pye.onrender.com/api/orders", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    customerName: customerName,
+                    customerName: activeCustomerName,
                     items: cart.map((item) => ({
                         name: item.name,
                         quantity: item.quantity,

@@ -9,29 +9,30 @@ function OrderHistory() {
   const [filter, setFilter] = useState("all");
 
   const fetchOrders = () => {
-    // Read the logged-in user from localStorage
+    // Read logged-in user session
     const savedUser = JSON.parse(
       localStorage.getItem("canteenUser") || 
       localStorage.getItem("user") || 
       "{}"
     );
 
+    const activeName = savedUser.name || savedUser.email;
+
     fetch("https://smart-canteen-system-5pye.onrender.com/api/orders")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
-          // If a student is logged in, filter only THEIR orders
-      // If a student is logged in, show their orders OR any test orders tagged "Student"
-          if (savedUser.name) {
+          if (activeName) {
+            // ONLY keep orders where customerName strictly matches this user
             const myOrders = data.filter(
               (order) =>
-                order.customerName?.trim().toLowerCase() === savedUser.name?.trim().toLowerCase() ||
-                order.customerName?.trim().toLowerCase() === "student"
+                order.customerName?.trim().toLowerCase() ===
+                activeName.trim().toLowerCase()
             );
             setOrders(myOrders);
           } else {
-            // Fallback: show the orders if user session is missing
-            setOrders(data);
+            // Not logged in or new user without matching orders: show empty
+            setOrders([]);
           }
         }
         setLoading(false);
